@@ -1,1 +1,31 @@
+"' We have following information on countries and their population (population is in crores),
 
+Country	Population
+China	143
+India	136
+USA	32
+Pakistan	21
+Using above create a dictionary of countries and its population
+add: if user input add then it should further ask for a country name to add. 
+If country already exist in our dataset then it should print that it exist and do nothing.
+If it doesn't then it asks for population and add that new country/population in our dictionary and print it "'
+
+population = {
+    'china': 143,
+    'india': 136,
+    'usa': 32,
+    'pakistan': 21
+}
+def add ():
+    ask = input("Enter the name of the country to add: ")
+    ask = ask.lower()
+    if ask in population :
+        print("It already exists in our list")
+        return
+    else :
+        pop = input(f'Enter the population of {ask} to add: ')
+        pop = float(pop)
+        population[ask] = pop
+        print(population)
+
+add()
