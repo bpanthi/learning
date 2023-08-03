@@ -6,9 +6,15 @@ India	136
 USA	32
 Pakistan	21
 Using above create a dictionary of countries and its population
-add: if user input add then it should further ask for a country name to add. 
-If country already exist in our dataset then it should print that it exist and do nothing.
-If it doesn't then it asks for population and add that new country/population in our dictionary and print it "'
+Write a program that asks user for three type of inputs,
+print: if user enter print then it should print all countries with their population in this format,
+china==>143
+india==>136
+usa==>32
+pakistan==>21
+add: if user input add then it should further ask for a country name to add. If country already exist in our dataset then it should print that it exist and do nothing. If it doesn't then it asks for population and add that new country/population in our dictionary and print it
+remove: when user inputs remove it should ask for a country to remove. If country exist in our dictionary then remove it and print new dictionary using format shown above in (a). Else print that country doesn't exist!
+query: on this again ask user for which country he or she wants to query. When user inputs that country it will print population of that country. "'
 
 population = {
     'china': 143,
@@ -16,6 +22,7 @@ population = {
     'usa': 32,
     'pakistan': 21
 }
+
 def add ():
     ask = input("Enter the name of the country to add: ")
     ask = ask.lower()
@@ -27,5 +34,38 @@ def add ():
         pop = float(pop)
         population[ask] = pop
         print(population)
+    print_all()
 
-add()
+def remove():
+    country = input("Enter the name of country to remove: ")
+    country = country.lower()
+    if country in population:
+        del population[country]
+        print(population)
+    else:
+        print(f"{country} doesnt exist in our list" )
+        return
+    print_all()
+
+def query():
+    country = input("About which country you want to know: ")
+    country = country.lower()
+    if country in population:
+        print(population(country))
+        
+def print_all():
+    for country, pop in population.items():
+        print(f"{country} ==> {pop}")
+
+def main ():
+    output = input(f"What you want to do among (add, remove, query): ")
+    output = output.lower()
+    if output == 'add':
+        add()
+    elif output == 'remove':
+        remove()
+    elif output == 'query':
+        query()
+        
+if __name__ == '__main__':
+    main()
